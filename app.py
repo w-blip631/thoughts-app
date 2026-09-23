@@ -110,20 +110,22 @@ else:
         filtered_thoughts = thoughts
 
     # 渲染卡片
-    for t in filtered_thoughts:
-        try:
-            dt = datetime.datetime.fromisoformat(t['created_at'].replace('Z', '+00:00'))
-            dt_local = dt + datetime.timedelta(hours=8)
-            time_str = dt_local.strftime("%m月%d日 %H:%M")
-        except:
-            time_str = t['created_at']
-            
-               with st.container(border=True):
-            # 如果有图片，显示图片
-            if t.get('image_url'):
-                st.image(t['image_url'], use_container_width=True)
-            
-            st.markdown(f"**{t['mood']}**")
-            st.write(t['content'])
-            # 显示地点与时间
-            st.caption(f"📍 {t.get('location') or '未知星球'} | ✨ {time_str}")
+
+# 渲染卡片
+for t in filtered_thoughts:
+    try:
+        dt = datetime.datetime.fromisoformat(t['created_at'].replace('Z', '+00:00'))
+        dt_local = dt + datetime.timedelta(hours=8)
+        time_str = dt_local.strftime("%m月%d日 %H:%M")
+    except:
+        time_str = t['created_at']
+        
+    with st.container(border=True):
+        # 如果有图片，显示图片
+        if t.get('image_url'):
+            st.image(t['image_url'], use_container_width=True)
+        
+        st.markdown(f"**{t['mood']}**")
+        st.write(t['content'])
+        # 显示地点与时间
+        st.caption(f"📍 {t.get('location') or '未知星球'} | ✨ {time_str}")
