@@ -14,7 +14,7 @@ header {visibility: hidden;}
 footer {visibility: hidden;}
 div[data-testid="stToolbar"] {display: none;}
 
-/* 2. 设置你的漫画星空背景（!!!注意：这里的名字必须和第一步重命名后的图片文件名完全一致!!!） */
+/* 2. 设置你的漫画星空背景 */
 [data-testid="stAppViewContainer"] {
     background-image: url("bg.png") !important;
     background-size: cover !important;
