@@ -9,13 +9,19 @@ st.markdown("""
 <style>
 #MainMenu, header, footer, div[data-testid="stToolbar"] {visibility: hidden;}
 
-/* 1. 柔和的动态宇宙背景（纯代码生成，无需图片） */
+/* 1. 纯粹流动的深空渐变（无网格，不刺眼） */
 [data-testid="stAppViewContainer"] {
-    background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460, #1a1a2e);
-    background-size: 400% 400%;
-    animation: gradientMove 20s ease infinite;
+    background: linear-gradient(135deg, #0f172a, #1e1b4b, #312e81, #0f172a);
+    background-size: 300% 300%;
+    animation: gradientFlow 25s ease infinite;
+    background-attachment: fixed;
 }
 
+@keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
 @keyframes gradientMove {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
