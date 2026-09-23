@@ -14,7 +14,7 @@ div[data-testid="stToolbar"] {display: none;}
 
 /* 2. 设置背景图 (这里的 bg.jpg.png 必须和你上传的图片名字一模一样) */
 [data-testid="stAppViewContainer"] {
-    background-image: url("bg.jpg.png") !important;
+    background-image: url("https://raw.githubusercontent.com/w-blip631/thoughts-app/main/bg.jpg") !important;
     background-size: cover !important;
     background-position: center !important;
     background-attachment: fixed !important;
