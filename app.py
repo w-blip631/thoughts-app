@@ -9,12 +9,37 @@ st.markdown("""
 <style>
 #MainMenu, header, footer, div[data-testid="stToolbar"] {visibility: hidden;}
 
-/* 1. 设置朦胧的地球背景图（你可以换掉 URL 换成你喜欢的图） */
+/* 1. 柔和的动态宇宙背景（纯代码生成，无需图片） */
 [data-testid="stAppViewContainer"] {
-    background-image: url("https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?q=80&w=1000&auto=format&fit=crop");
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460, #1a1a2e);
+    background-size: 400% 400%;
+    animation: gradientMove 20s ease infinite;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* 2. 动态星空点（用径向渐变模拟漫画线条星星） */
+[data-testid="stAppViewContainer"]::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: 
+        radial-gradient(white 1px, transparent 1px),
+        radial-gradient(#e0e0ff 1px, transparent 1px);
+    background-size: 50px 50px, 100px 100px;
+    background-position: 0 0, 25px 25px;
+    opacity: 0.15;
+    animation: starMove 60s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes starMove {
+    from { background-position: 0 0, 25px 25px; }
+    to { background-position: 500px 500px, 525px 525px; }
 }
 
 /* 2. 给主要内容区加一个半透明白色遮罩，保证文字可读 */
