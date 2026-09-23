@@ -9,12 +9,19 @@ st.markdown("""
 <style>
 #MainMenu, header, footer, div[data-testid="stToolbar"] {visibility: hidden;}
 
-/* 1. 纯粹流动的深空渐变（无网格，不刺眼） */
+/* 1. 自定义漫画星空背景 */
 [data-testid="stAppViewContainer"] {
-    background: linear-gradient(135deg, #0f172a, #1e1b4b, #312e81, #0f172a);
-    background-size: 300% 300%;
-    animation: gradientFlow 25s ease infinite;
+    background-image: url("bg.jpg.png"); 
+    background-size: cover;
+    background-position: center;
     background-attachment: fixed;
+    /* 缓慢呼吸放大的动效 */
+    animation: breathe 30s infinite alternate ease-in-out;
+}
+
+@keyframes breathe {
+    0% { background-size: 100%; }
+    100% { background-size: 110%; }
 }
 
 @keyframes gradientFlow {
