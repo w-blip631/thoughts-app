@@ -6,73 +6,41 @@ import base64
 st.set_page_config(page_title="情绪地球", page_icon="🌍", layout="centered")
 
 st.markdown("""
+st.markdown("""
 <style>
-#MainMenu, header, footer, div[data-testid="stToolbar"] {visibility: hidden;}
+/* 1. 隐藏顶部工具栏和页脚 */
+#MainMenu {visibility: hidden;}
+header {visibility: hidden;}
+footer {visibility: hidden;}
+div[data-testid="stToolbar"] {display: none;}
 
-/* 1. 自定义漫画星空背景 */
+/* 2. 设置你的漫画星空背景（!!!注意：这里的名字必须和第一步重命名后的图片文件名完全一致!!!） */
 [data-testid="stAppViewContainer"] {
-    background-image: url("bg.jpg.png"); 
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    /* 缓慢呼吸放大的动效 */
-    animation: breathe 30s infinite alternate ease-in-out;
+    background-image: url("bg.png") !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-attachment: fixed !important;
 }
 
-@keyframes breathe {
-    0% { background-size: 100%; }
-    100% { background-size: 110%; }
-}
-
-@keyframes gradientFlow {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-@keyframes gradientMove {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-/* 2. 动态星空点（用径向渐变模拟漫画线条星星） */
-[data-testid="stAppViewContainer"]::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-image: 
-        radial-gradient(white 1px, transparent 1px),
-        radial-gradient(#e0e0ff 1px, transparent 1px);
-    background-size: 50px 50px, 100px 100px;
-    background-position: 0 0, 25px 25px;
-    opacity: 0.15;
-    animation: starMove 60s linear infinite;
-    pointer-events: none;
-}
-
-@keyframes starMove {
-    from { background-position: 0 0, 25px 25px; }
-    to { background-position: 500px 500px, 525px 525px; }
-}
-
-/* 2. 给主要内容区加一个半透明白色遮罩，保证文字可读 */
+/* 3. 给内容区加半透明毛玻璃卡片 */
 .block-container {
     max-width: 640px;
-    background-color: rgba(250, 248, 245, 0.85); /* 米白+85%不透明度 */
-    backdrop-filter: blur(10px); /* 毛玻璃效果 */
+    background-color: rgba(250, 248, 245, 0.85);
+    backdrop-filter: blur(10px);
     border-radius: 24px;
     padding: 3rem 2rem;
     margin-top: 2rem;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
-/* 其余输入框、按钮、卡片的温柔美化与之前一致 */
+/* 4. 输入框、按钮等细节美化 */
 .stTextArea textarea {background-color: #FFFFFF !important; border-radius: 12px !important; border: 1px solid #E8E4DF !important; padding: 16px !important; font-size: 16px !important; line-height: 1.8 !important;}
 div[data-baseweb="select"] > div {background-color: #FFFFFF !important; border-radius: 10px !important; border: 1px solid #E8E4DF !important;}
 div.stButton > button:first-child {background-color: #A8C0D6 !important; color: #FFFFFF !important; border-radius: 20px !important; padding: 8px 28px !important; border: none !important; transition: all 0.3s ease !important;}
 div.stButton > button:first-child:hover {background-color: #93AEC4 !important; transform: scale(1.02);}
 hr {border-color: #E8E4DF !important;}
 </style>
+""", unsafe_allow_html=True)
 """, unsafe_allow_html=True)
 
 st.title("🌍 情绪地球")
